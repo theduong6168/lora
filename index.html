@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="index.html"><img src="./assets/img/logo.jpg" height="40px" alt="logo" style="border-radius: 50%;" > Đỗ Thế Dương</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+               
+            </div>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Điểm đo</div>
+                            <a class="nav-link" href="./index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Trường Đại Học Thủy Lợi
+                            </a>
+                            <a class="nav-link" href="./diemdo2.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Trường Chinh
+                            </a>
+                            <a class="nav-link" href="./diemdo3.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Hồ Rùa
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Cài đặt</div>
+                            <a class="nav-link" href="./setup-parameter.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
+                                Cài đặt thông số các điểm đo
+                            </a>             
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Đỗ Thế Dương
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4 mb-3">Trường Đại Học Thủy Lợi</h1>
+                        
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Mức nước hiện tại</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h3 id="point1_value">0 cm</h3>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4"  id="point1_waring_box">
+                                    <div class="card-body">Cảnh Báo</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h3 id="point1_waring">An toàn</h3>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-secondary text-white mb-4"  id="point1_pin_box">
+                                    <div class="card-body">Pin hiện tại</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h3 id="point1_pin_value">3.6V</h3>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                          
+                        </div>
+                        <div class="dropdown mb-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Biểu đồ
+                            </button>
+                            <ul class="dropdown-menu" id="dhtl-drop-chart" >
+                              <li  onclick="changeChartDHTL(0)"><a class="dropdown-item" href="#">1 ngày</a></li>
+                              <li  onclick="changeChartDHTL(1)"><a class="dropdown-item" href="#">1 tuần</a></li>
+                              <li  onclick="changeChartDHTL(2)"><a class="dropdown-item" href="#">1 tháng</a></li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6" style="height: 60vh;">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        Area Chart
+                                    </div>
+                                    <div class="card-body"><iframe  id="chartDHTL" width="100%" height="260px" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2229095/charts/2?bgcolor=%23ffffff&color=%23d62020&days=1&dynamic=true&results=30&title=Day&type=line"></iframe></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6" >
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        Map
+                                    </div>
+                                    <div class="card-body"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.632798723263!2d105.8221554735449!3d21.007351588516844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac8109765ba5%3A0xd84740ece05680ee!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBUaOG7p3kgbOG7o2k!5e0!3m2!1svi!2s!4v1714242641340!5m2!1svi!2s" width="100%" height="240px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <!-- <button id="btnSet">Add Data</button>
+                    <button id="btnGet">Reload Data</button>
+                    <button id="btnGet">Set Data</button> -->
+                    
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-end small">
+
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+       
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+        
+        <script>
+            var DHTL_CHAR = [
+                "https://thingspeak.com/channels/2535755/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15",
+                "https://thingspeak.com/channels/2535755/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15",
+                "https://thingspeak.com/channels/2535755/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+            ];
+
+            function changeChartDHTL(number) {
+                document.getElementById("chartDHTL").setAttribute("src",DHTL_CHAR[number]);
+        }
+
+        </script>
+
+        <script type="module">
+            import { initializeApp } from  "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+            import { getDatabase, ref, set ,onValue } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-database.js";
+            const firebaseConfig = {
+                apiKey: "AIzaSyC7XisAMpGz8bGcdDT1k7EXw1f889BHTG0",
+                authDomain: "lora-esp32-waterlevel.firebaseapp.com",
+                databaseURL: "https://lora-esp32-waterlevel-default-rtdb.firebaseio.com",
+                projectId: "lora-esp32-waterlevel",
+                storageBucket: "lora-esp32-waterlevel.appspot.com",
+                messagingSenderId: "936160260055",
+                appId: "1:936160260055:web:cf305206c04ff1b0dae592",
+                measurementId: "G-BDY0H76H3J"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase();
+
+            // ham tao firebase value
+            function setFirebase(ID, valueDistance, thresholdValue, heightInstall) {
+                set(ref(db, 'Database/' + ID), {
+                    value: valueDistance,
+                    threshold: thresholdValue,
+                    heightInstallSensor: heightInstall
+                }).then(()=> {
+                    console.log("Data added ok");
+                }).catch(()=> {
+                    console.log("error");
+                });
+            }
+            // ham get data firebase
+            var dataValue= 0;  
+            var thresholdValue = 0;
+            function getFirebaseValue(ID) {
+                const starCountRef = ref(db, 'Database/' + ID + '/value');
+                onValue(starCountRef, (snapshot) => {
+                    const data = snapshot.val();
+                    dataValue = data;
+                    document.getElementById("point1_value").innerHTML = data + " cm";
+                });
+            }
+            function getFirebaseThresshold(ID) {
+                const starCountRef  = ref(db, 'Database/' + ID + '/threshold');
+                onValue(starCountRef, (snapshot) => {
+                    const data = snapshot.val();
+                    thresholdValue = data;
+                    console.log(thresholdValue) ;  
+                });
+            }
+            // ham update firebase valueDistance
+            function updateFirebaseValueDistance(ID, valueDistance, thresholdValue, heightInstall) {
+                update(ref(db, 'Database/' + ID), {
+                    value: valueDistance,
+                }).then(()=> {
+                    console.log("Data added ok");
+                }).catch(()=> {
+                    console.log("error");
+                });
+            }
+            // ham update firebase Setup
+            function updateFirebaseSetup(ID,  thresholdValue, heightInstall) {
+                update(ref(db, 'Database/' + ID), {
+                    threshold: thresholdValue,
+                    heightInstallSensor: heightInstall
+                }).then(()=> {
+                    console.log("Data updated ok");
+                }).catch(()=> {
+                    console.log("error");
+                });
+            }
+
+
+            //const setBtn = document.getElementById("btnSet");
+            //const getBtn = document.getElementById("btnGet");
+            function addData() {
+                setFirebase("point1", 60 , 30, 350);
+            }
+            var k = 0;
+            function getData() {
+                getFirebaseValue("point1");
+                getFirebaseThresshold("point1");
+                if(dataValue > thresholdValue) {
+                    document.getElementById('point1_waring_box').setAttribute('style', 'background-color: red !important');
+                    document.getElementById('point1_waring').innerHTML = "Nguy Hiểm";
+                    if(k == 0) {
+                        alert("Điểm đo Trường Chinh nước cao");
+                        k = 1;
+                    }
+                    
+                }
+                else {
+                    document.getElementById('point1_waring_box').setAttribute('style', 'background-color: #198754 !important');
+                    document.getElementById('point1_waring').innerHTML = "An toàn";
+                    k = 0;
+                }
+            }
+            //setBtn.addEventListener('click', addData);
+            //getBtn.addEventListener('click', getData);
+
+            window.setInterval(getData,1000);
+        </script>
+    </body>
+</html>

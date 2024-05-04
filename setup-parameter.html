@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="index.html"><img src="./assets/img/logo.jpg" height="40px" alt="logo" style="border-radius: 50%;" > Đỗ Thế Dương</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+               
+            </div>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Điểm đo</div>
+                            <a class="nav-link" href="./index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Trường Đại Học Thủy Lợi
+                            </a>
+                            <a class="nav-link" href="./diemdo2.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Trường Chinh
+                            </a>
+                            <a class="nav-link" href="./diemdo3.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Hồ Rùa
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Cài đặt</div>
+                            <a class="nav-link" href="./setup-parameter.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
+                                Cài đặt thông số các điểm đo
+                            </a>             
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Đỗ Thế Dương
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                   <div class="container-fluid m-4">
+                        <div class="row">
+                            <div class="col-xl col-12 ">
+                                <div class="card mb-3" style="width: 350px; height:300px;">
+                                    <div class="card-body">
+                                      <h5 class="card-title mb-5">Điểm đo Đại học Thủy Lợi</h5>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" >Chiều cao lắp cảm biến</span>
+                                        <input id="point1_chieucao" type="text" class="form-control" placeholder="cm" aria-label="Username" aria-describedby="basic-addon1">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" >Ngưỡng</span>
+                                        <input id="point1_nguong" type="text" class="form-control" placeholder="cm" aria-label="Username" aria-describedby="basic-addon1">
+                                      </div>
+                                      <br>
+                                     
+                                      <button type="button" class="btn btn-secondary" style="width: 120px;" id="point1_fetch">Fetch Data</button>
+                                      <button type="button" class="btn btn-success" style="width: 120px;" id="point1_setup">  Setup  </button>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-xl col-12 ">
+                                <div class="card mb-3" style="width: 350px; height:300px;">
+                                    <div class="card-body">
+                                      <h5 class="card-title mb-5">Điểm đo Trường Chinh</h5>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" >Chiều cao lắp cảm biến</span>
+                                        <input id="point2_chieucao" type="text" class="form-control" placeholder="cm" aria-label="Username" aria-describedby="basic-addon1">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" >Ngưỡng</span>
+                                        <input id="point2_nguong" type="text" class="form-control" placeholder="cm" aria-label="Username" aria-describedby="basic-addon1">
+                                      </div>
+                                      <br>
+                                     
+                                      <button type="button" class="btn btn-secondary" style="width: 120px;" id="point2_fetch">Fetch Data</button>
+                                      <button type="button" class="btn btn-success" style="width: 120px;" id="point2_setup">  Setup  </button>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-xl col-12 ">
+                                <div class="card mb-3" style="width: 350px; height:300px;">
+                                    <div class="card-body">
+                                      <h5 class="card-title mb-5">Điểm đo Hồ Rùa</h5>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text">Chiều cao lắp cảm biến</span>
+                                        <input  id="point3_chieucao" type="text" class="form-control" placeholder="cm" aria-label="Username" aria-describedby="basic-addon1">
+                                        
+                                    </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" >Ngưỡng</span>
+                                        <input id="point3_nguong" type="text" class="form-control" placeholder="cm" aria-label="Username" aria-describedby="basic-addon1">
+                                      </div>
+                                      <br>
+                                    
+                                      <button type="button" class="btn btn-secondary" style="width: 120px;" id="point3_fetch">Fetch Data</button>
+                                      <button type="button" class="btn btn-success" style="width: 120px;" id="point3_setup">  Setup  </button>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                            
+                   </div>
+                    
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-end small">
+
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+       
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+        
+        <script>
+            var DHTL_CHAR = [
+                "https://thingspeak.com/channels/2229095/charts/2?bgcolor=%23ffffff&color=%23d62020&days=1&dynamic=true&results=30&title=Day&type=line",
+                "https://thingspeak.com/channels/2229095/charts/3?bgcolor=%23ffffff&color=%23d62020&days=7&dynamic=true&results=60&title=Week&type=line",
+                "https://thingspeak.com/channels/2229095/charts/4?bgcolor=%23ffffff&color=%23d62020&days=30&dynamic=true&results=60&title=Month&type=line"
+            ];
+
+            function changeChartDHTL(number) {
+                document.getElementById("chartDHTL").setAttribute("src",DHTL_CHAR[number]);
+        }
+
+        </script>
+
+        <script type="module">
+            import { initializeApp } from  "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+            import { getDatabase, ref, set ,onValue } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-database.js";
+            const firebaseConfig = {
+                apiKey: "AIzaSyC7XisAMpGz8bGcdDT1k7EXw1f889BHTG0",
+                authDomain: "lora-esp32-waterlevel.firebaseapp.com",
+                databaseURL: "https://lora-esp32-waterlevel-default-rtdb.firebaseio.com",
+                projectId: "lora-esp32-waterlevel",
+                storageBucket: "lora-esp32-waterlevel.appspot.com",
+                messagingSenderId: "936160260055",
+                appId: "1:936160260055:web:cf305206c04ff1b0dae592",
+                measurementId: "G-BDY0H76H3J"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase();
+
+            // ham tao firebase value
+            function setFirebase(ID, valueDistance, thresholdValue, heightInstall) {
+                if(Number(thresholdValue)  < Number(heightInstall)) {
+                        set(ref(db, 'Database/' + ID), {
+                        value: valueDistance,
+                        threshold: thresholdValue,
+                        heightInstallSensor: heightInstall
+                    }).then(()=> {
+                        console.log("Data added ok");
+                    }).catch(()=> {
+                        console.log("error");
+                    });
+                    alert("Setup Database OK");
+                }
+                else  {
+                    alert("Ngưỡng phải thấp hơn chiều cao lắp cảm biến");
+                }
+               
+            }
+            // ham get data firebase
+            var valueSensor = 0;
+            var thresholdValue = 0;
+            var heightInstallSensorValue = 0;
+
+            function getFirebaseValueSensor(ID) {
+                const starCountRef  = ref(db, 'Database/' + ID + '/value');
+                
+                onValue(starCountRef, (snapshot) => {
+                    const data  = snapshot.val();
+                    console.log(data) ; 
+                    valueSensor = data;
+                });
+                
+            }
+
+            function getFirebaseThresshold(ID) {
+                const starCountRef  = ref(db, 'Database/' + ID + '/threshold');
+                
+                onValue(starCountRef, (snapshot) => {
+                    const data  = snapshot.val();
+                    console.log(data) ; 
+                    thresholdValue = data;
+                });
+                
+            }
+            function getFirebaseHeightInstallSensor(ID) {
+                const starCountRef  = ref(db, 'Database/' + ID + '/heightInstallSensor');
+                
+                onValue(starCountRef, (snapshot) => {
+                    const data = snapshot.val();
+                    console.log(heightInstallSensorValue) ;  
+                    heightInstallSensorValue = data;
+                });
+                
+            }
+
+            // ham update firebase Setup
+            function updateFirebaseSetup(ID,  thresholdValue, heightInstall) {
+                update(ref(db, 'Database/' + ID), {
+                    threshold: thresholdValue,
+                    heightInstallSensor: heightInstall
+                }).then(()=> {
+                    console.log("Data updated ok");
+                }).catch(()=> {
+                    console.log("error");
+                });
+            }
+
+
+            const point1_chieucao   = document.getElementById("point1_chieucao");
+            const point1_nguong     = document.getElementById("point1_nguong");
+            const point1_fetch      = document.getElementById("point1_fetch");
+            const point1_setup      = document.getElementById("point1_setup");
+
+            const point2_chieucao   = document.getElementById("point2_chieucao");
+            const point2_nguong     = document.getElementById("point2_nguong");
+            const point2_fetch      = document.getElementById("point2_fetch");
+            const point2_setup      = document.getElementById("point2_setup");
+
+            const point3_chieucao   = document.getElementById("point3_chieucao");
+            const point3_nguong     = document.getElementById("point3_nguong");
+            const point3_fetch      = document.getElementById("point3_fetch");
+            const point3_setup      = document.getElementById("point3_setup");
+
+
+
+
+            // Hàm point 1
+            function addDataPoint1() {
+                setFirebase("point1", 0 , point1_nguong.value,  point1_chieucao.value);
+                
+                getFirebaseHeightInstallSensor("point1");
+                getFirebaseThresshold("point1");
+                
+               
+                
+                point1_chieucao.value = heightInstallSensorValue;
+                point1_nguong.value = thresholdValue;
+            }
+            function getDataPoint1() {
+                getFirebaseHeightInstallSensor("point1");
+                getFirebaseThresshold("point1");
+    
+                point1_chieucao.value = heightInstallSensorValue;
+                point1_nguong.value = thresholdValue;
+            }
+            // Hàm point 2
+            function addDataPoint2() {
+                setFirebase("point2", 0 , point2_nguong.value,  point2_chieucao.value);
+                getFirebaseHeightInstallSensor("point2");
+                getFirebaseThresshold("point2");
+                point2_chieucao.value = heightInstallSensorValue;
+                point2_nguong.value = thresholdValue;
+
+            }
+            function getDataPoint2() {
+                getFirebaseHeightInstallSensor("point2");
+                getFirebaseThresshold("point2");
+    
+                point2_chieucao.value = heightInstallSensorValue;
+                point2_nguong.value = thresholdValue;
+            }
+            // Hàm point 3
+            function addDataPoint3() {
+                setFirebase("point3", 0 , point3_nguong.value,  point3_chieucao.value);
+                getFirebaseHeightInstallSensor("point3");
+                getFirebaseThresshold("point3");
+                point3_chieucao.value = heightInstallSensorValue;
+                point3_nguong.value = thresholdValue;
+            }
+            function getDataPoint3() {
+                getFirebaseHeightInstallSensor("point3");
+                getFirebaseThresshold("point3");
+    
+                
+                point3_chieucao.value = heightInstallSensorValue;
+                point3_nguong.value = thresholdValue;
+            }
+
+            
+
+            point1_fetch.addEventListener('click',  getDataPoint1);
+            point1_setup.addEventListener('click',  addDataPoint1);
+
+            point2_fetch.addEventListener('click',  getDataPoint2);
+            point2_setup.addEventListener('click',  addDataPoint2);
+
+            point3_fetch.addEventListener('click',  getDataPoint3);
+            point3_setup.addEventListener('click',  addDataPoint3);
+
+            getDataPoint1();
+            getDataPoint2();
+            getDataPoint3();
+        </script>
+    </body>
+</html>
